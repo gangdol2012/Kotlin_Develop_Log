@@ -1,4 +1,9 @@
 import kotlin.collections.*
+import java.io.*
+import java.io.File
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 fun input(intext:String): String {
     print(intext)
@@ -32,4 +37,12 @@ fun main(){
     println("Fuck you, Google addsense. Google addsense make to watch contents for adult to 11 years old student!!!")
     println("")
     println(split(input("input text : ")))
+}
+
+fun write(intext: String,filetext: String){
+    File(intext).printWriter().use{it.println(filetext)}
+}
+
+fun move(src: File, dest: File) {
+    Files.move(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING)
 }

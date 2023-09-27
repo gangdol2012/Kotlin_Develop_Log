@@ -32,17 +32,21 @@ fun split(intext:String): MutableList<String>{
     return list
 }
 
-fun main(){
-    println("")
-    println("Fuck you, Google addsense. Google addsense make to watch contents for adult to 11 years old student!!!")
-    println("")
-    println(split(input("input text : ")))
+
+fun makeFile(intextSrc: String): File{
+    File(intextSrc).printWriter().use{it.println("")}
+    return File(intextSrc)
 }
 
-fun write(intext: String,filetext: String){
-    File(intext).printWriter().use{it.println(filetext)}
-}
-
-fun move(src: File, dest: File) {
+fun moveSub(src: File, dest: File) {
     Files.move(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING)
+}
+
+fun move(intextSrc: String,intextDest:String){
+    moveSub(makeFile(intextSrc),makeFile(intextDest))
+}
+
+fun main(){
+    makeFile("./hyeon.txt")
+    move("./hyeon.txt","./src/main/kotlin/a.txt")
 }
